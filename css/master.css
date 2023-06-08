@@ -1,0 +1,40 @@
+body {
+    background-color: #d7d7d7;
+    color: black;
+}
+
+
+.hero-image {
+    background-image: url('/images/hero-image.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width:100vw;
+    height:100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: crimson;
+}
+
+p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.dropdown-menu {
+    background-color: darkolivegreen;
+}
+
+#dropdownid {
+    background-color:darkgreen;
+    display: block;
+    text-align: center;
+}
+
+#check {
+    background-color: darkgoldenrod;
+}

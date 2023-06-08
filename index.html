@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2250%22 fill=%22%230058ff%22></rect><path fill=%22%23fff%22 d=%22M72.15 21.33L72.15 21.33Q74.49 22.50 74.90 25.02Q75.30 27.54 73.59 29.61L73.59 29.61Q72.42 31.23 70.58 31.41Q68.73 31.59 66.84 30.69L66.84 30.69Q64.68 29.70 62.30 29.16Q59.91 28.62 57.30 28.62L57.30 28.62Q52.44 28.62 48.62 30.15Q44.79 31.68 42.09 34.52Q39.39 37.35 38.00 41.22Q36.60 45.09 36.60 49.77L36.60 49.77Q36.60 55.26 38.18 59.31Q39.75 63.36 42.54 66.06Q45.33 68.76 49.11 70.07Q52.89 71.37 57.30 71.37L57.30 71.37Q59.73 71.37 62.16 70.92Q64.59 70.47 66.84 69.30L66.84 69.30Q68.73 68.40 70.58 68.67Q72.42 68.94 73.68 70.56L73.68 70.56Q75.48 72.81 74.99 75.20Q74.49 77.58 72.24 78.66L72.24 78.66Q69.90 79.83 67.43 80.60Q64.95 81.36 62.43 81.77Q59.91 82.17 57.30 82.17L57.30 82.17Q50.82 82.17 45.02 80.10Q39.21 78.03 34.67 73.98Q30.12 69.93 27.51 63.86Q24.90 57.78 24.90 49.77L24.90 49.77Q24.90 42.84 27.29 36.99Q29.67 31.14 34.04 26.87Q38.40 22.59 44.34 20.21Q50.28 17.82 57.30 17.82L57.30 17.82Q61.26 17.82 65.04 18.72Q68.82 19.62 72.15 21.33Z%22></path></svg>" />
+<meta charset="UTF-8">
+<meta http-equiv=“Pragma” content=”no-cache”>
+<meta http-equiv=“Expires” content=”-1″>
+<meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
+<!-- CSS Stylesheets -->
+<link rel="stylesheet" href="css/master.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+<title>API Project</title>
+<script src="http://d3js.org/d3.v3.js"></script>
+<script>
+    const rawdata = `latitude,longitude,city,country
+52.367,4.904,Amsterdam,Netherlands
+39.933,32.859,Ankara,Turkey
+56.134,12.945,Åstorp,Sweden
+37.983,23.727,Athens,Greece
+54.597,-5.930,Belfast,Northern Ireland
+41.387,2.168,Barcelona,Spain
+52.520,13.405,Berlin,Germany
+46.948,7.447,Bern,Switzerland
+43.263,-2.935,Bilbao,Spain
+50.847,4.357,Brussels,Belgium
+47.497,19.040,Bucharest,Romania
+59.329,18.068,Budapest,Hungary
+51.483,-3.168,Cardiff,Wales
+50.937,6.96,Cologne,Germany
+55.676,12.568,Copenhagen,Denmark
+51.898,-8.475,Cork,Ireland
+53.349,-6.260,Dublin,Ireland
+55.953,-3.188,Edinburgh,Scotland
+43.7696,11.255,Florence,Italy
+50.110,8.682,Frankfurt,Germany        
+43.254,6.637,French Riviera,France
+32.650,-16.908,Funchal,Portugual
+36.140,-5.353,Gibraltar
+57.708,11.974,Gothenburg,Sweden     
+53.548,9.987,Hamburg,Germany
+60.169,24.938,Helsinki,Finland
+39.020,1.482,Ibiza,Spain
+50.450,30.523,Kyiv,Ukraine
+61.115,10.466,Lillehammer,Norway
+38.722,-9.139,Lisbon,Portugual
+51.507,-0.127,London,England      
+40.416,-3.703,Madrid,Spain
+39.695,3.017,Mallorca,Spain
+53.480,-2.242,Manchester,England       
+43.296,5.369,Marseille,France
+27.760,-15.586,Maspalomas,Spain
+45.464,9.190,Milan,Italy
+48.135,11.582,Munich,Germany
+40.851,14.268,Naples,Italy
+43.034,-2.417,Oñati,Spain
+59.913,10.752,Oslo,Norway
+48.856,2.352,Paris,France
+50.075,14.437,Prague,Czech Republic
+64.146,-21.942,Reykjavík,Iceland
+56.879,24.603,Riga,Latvia
+41.902,12.496,Rome,Italy
+39.453,-31.127,Santa Cruz das Flores,Portugual
+28.463,-16.251,Santa Cruz de Tenerife,Spain
+57.273,-6.215,Skye,Scotland
+42.697,23.321,Sofia,Bulgaria
+59.329,18.068,Stockholm,Sweden
+59.437,24.753,Tallinn,Estonia
+18.208,16.373,Vienna,Austria
+52.229,21.012,Warsaw,Poland
+53.961,-1.07,York,England
+47.376,8.541,Zurich,Switzerland`;
+
+let rows = rawdata.split("\n");
+let columnnames = rows.shift();
+// console.log("column names:"+JSON.stringify(columnnames));
+// console.log("rows:"+JSON.stringify(rows));
+let columns = columnnames.split(",");
+let city_val = new Object();
+
+
+let city_array = [];
+rows.forEach((row, index) => {
+    let obj = new Object();
+    let eachrow = row.split(",");
+    // eachrow.forEach((e, i) => {
+    //     obj[columns[i]] = e;
+    // })
+    city_array.push(eachrow);
+});
+
+// console.log("city_array:"+JSON.stringify(city_array));
+
+window.onload =  function func() {
+    //console.log("button worked"+JSON.stringify(city_array));
+    //alert("button worked");
+    var select = document.getElementById('dropdownid');
+    for (var i = 0; i < city_array.length; i++) {
+                var optn = city_array[i][2] + ", " + city_array[i][3];
+                var el = document.createElement("option");
+                el.textContent = optn;
+                el.value = [city_array[i][0], city_array[i][1]];
+                select.appendChild(el);
+            }
+};
+
+//const weather = $('.weather');
+
+// $.get('http://www.7timer.info/bin/api.pl?lon=113.17&lat=23.09&product=astro&output=json').then((data) => {
+//     console.log(data);
+//     const weatherText = data[0];
+//     weather.append(weatherText);
+// }).catch((e) => {
+//     console.log("not found");
+// })
+
+
+function disp(){
+    var weather_data = [];
+    d = document.getElementById('dropdownid').value;
+    console.log("current dropdown value is:"+ d);
+    let coord = d.split(",");
+    let lat = coord[0];
+    let long = coord[1];
+    console.log("lat"+lat+" "+"long"+long);
+    fetch(`http://www.7timer.info/bin/api.pl?lon=${long}&lat=${lat}&product=civil&output=json`)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.dataseries.length);
+    for(var j=0; j< 7; j++){//data.dataseries.length
+        console.log(data.dataseries[j].weather);
+        var w = data.dataseries[j].weather;
+        weather_data.push(w);
+        
+    }
+    let tab =
+        `<tr>
+          <th>Timepoint</th>
+          <th>Weather</th>
+         </tr>`;
+    for(var k=0; k< weather_data.length; k++){
+        tab += `<tr>
+          <td>${k}</td>
+          <td>${weather_data[k]}</td>
+         </tr>`;
+    }
+
+    document.getElementById('weather').innerHTML = tab;
+    }).catch(error => {console.log(error)});
+    viewWeather();
+}
+
+async function viewWeather(){
+    console.log("task completed");    
+}
+
+
+
+//let weather_data = [];
+// const url = 'http://www.7timer.info/bin/api.pl?lon=-8.475&lat=51.898&product=civil&output=json';
+// fetch(url)
+// .then(response => response.json())
+// .then(data => {
+//     console.log(data.dataseries.length);
+//     for(var j=0; j< 7; j++){//data.dataseries.length
+//         console.log(data.dataseries[j].weather);
+//         var w = data.dataseries[j].weather;
+//         weather_data.push(w);
+        
+//     }
+//     let tab =
+//         `<tr>
+//           <th>Timepoint</th>
+//           <th>Weather</th>
+//          </tr>`;
+//     for(var k=0; k< weather_data.length; k++){
+//         tab += `<tr>
+//           <td>${k}</td>
+//           <td>${weather_data[k]}</td>
+//          </tr>`;
+//     }
+
+//     document.getElementById('weather').innerHTML = tab;
+
+    //console.log(data.dataseries[0].weather);
+    //const weatherText = data.dataseries[0].weather;
+    //weather.append(weatherText);
+    //let tab = `<p>${weatherText}</p>`;
+    //document.getElementById('weather').innerHTML = tab;
+
+//}).catch(error => {console.log(error)});
+
+
+// document.getElementsById('weather').innerHTML = JSON.stringify(weatherText);
+
+// async function getapi(url){
+//     const response = await fetch(url);
+//     var data = response.json();
+//     console.log(data.dataseries);
+//     data = data.dataseries;
+//     show(data);
+// }
+
+// getapi(url);
+
+// function show(data){
+//     for(let r of data){
+//         let tab = `<p>${r.weather}</p>`;
+//     }
+
+//     document.getElementById("weather").innerHTML = tab;
+// }
+
+
+
+
+
+</script>
+</head>
+
+<body>
+
+<div class="hero-image">
+   <p> Find the weather forecast for any city</p> &nbsp;&nbsp;
+
+   <select class="btn btn-secondary dropdown-toggle" type="button" 
+   id="dropdownid" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select city</select>
+   
+   <!-- <div class="dropdown-menu" aria-labelledby="dropdownid">
+        <a class="dropdown-item">Select a city name..</a>
+        <a class="dropdown-item" value="Amsterdam">Amsterdam, Netherlands</a>
+   </div> -->
+<br/>
+<button class="btn btn-secondary" id="check" type="submit" onclick="disp()">Check</button>
+
+   <div class="container">
+    <div id="weather">
+    </div>
+   </div>
+
+</div>
+
+</body>
+
+<!-- <footer>
+    <p class="copyright-text">© Copyright 2023 _______ </p>
+</footer> -->
+
+<!-- Our codes -->
+<script src="js/main.js"></script>
+
+
