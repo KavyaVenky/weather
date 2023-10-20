@@ -20,7 +20,7 @@
 
 p {
   font-weight: bolder;
-  color: rgb(228, 219, 207);
+  color: rgb(31, 30, 29);
   font-size: xx-large;
   text-align: center;
   margin: 2em;
@@ -29,7 +29,8 @@ p {
 body {
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-color: #6282c0;
+  background-image: url("/public/clouds.jpg");
+  background-size: cover;
   
 }
 
